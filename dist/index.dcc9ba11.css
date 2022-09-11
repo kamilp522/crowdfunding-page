@@ -1,5 +1,118 @@
+@import "https://fonts.googleapis.com/css2?family=Commissioner:wght@400;500;700&family=Open+Sans&display=swap";
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+img, picture {
+  max-width: 100%;
+  line-height: 0;
+  display: block;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+button {
+  all: unset;
+  cursor: pointer;
+}
+
+a {
+  all: unset;
+  color: #00f;
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+}
+
+header {
+  min-height: 20rem;
+}
+
+header .header-img-wrapper {
+  z-index: -1;
+  position: absolute;
+}
+
+header nav {
+  width: 100%;
+  z-index: 2;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5em 1.5em 1.5em 1em;
+  display: flex;
+  position: relative;
+}
+
+header .header-logo {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+header .menu-icon {
+  width: 1.25rem;
+}
+
+.sidebar:before {
+  content: "";
+  z-index: 1;
+  background: linear-gradient(#0009, #00000026);
+  display: block;
+  position: fixed;
+  inset: 0;
+}
+
+.sidebar-wrapper {
+  min-height: 12rem;
+  z-index: 3;
+  background-color: #fff;
+  border-radius: 7px;
+  display: flex;
+  position: fixed;
+  top: 13.5%;
+  left: 10%;
+  right: 10%;
+}
+
+.sidebar-wrapper .sidebar-menu {
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+  display: flex;
+}
+
+.sidebar-wrapper .sidebar-menu li {
+  height: 33.33%;
+  border-bottom: 1px solid #3cb4ac;
+  align-items: center;
+  padding-left: 1em;
+  display: flex;
+}
+
+.sidebar-wrapper .sidebar-menu li a {
+  color: #000;
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.sidebar-wrapper .sidebar-menu li:last-child {
+  border-bottom: none;
+}
+
+html {
+  font-size: 16px;
+}
+
 body {
-  background: gray;
+  min-height: calc(500vh - .1px);
+  font-family: Commissioner;
+  font-weight: 400;
 }
 
 /*# sourceMappingURL=index.dcc9ba11.css.map */
