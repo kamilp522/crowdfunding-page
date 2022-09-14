@@ -76,10 +76,9 @@ header .menu-icon.active {
   display: block;
 }
 
-.sidebar:before {
+.sidebar.active:before {
   opacity: 1;
   content: "";
-  z-index: 997;
   background: linear-gradient(#0009, #00000026);
   display: block;
   position: fixed;
@@ -150,22 +149,12 @@ header .menu-icon.active {
 }
 
 .welcome-info .welcome-container p {
-  opacity: .7;
+  color: gray;
 }
 
 .welcome-info .welcome-container .btn-bkmrk-wrapper {
   justify-content: center;
   display: flex;
-}
-
-.welcome-info .welcome-container .btn-bkmrk-wrapper .button {
-  color: #fff;
-  letter-spacing: .5px;
-  background-color: #3cb4ac;
-  border-radius: 25px;
-  margin-right: .5em;
-  padding: 1em 2em;
-  font-weight: 700;
 }
 
 .visually-hidden {
@@ -234,7 +223,7 @@ header .menu-icon.active {
 }
 
 .backed-info .backed-container div p:last-child {
-  opacity: .7;
+  color: gray;
 }
 
 .backed-info .progression-bar {
@@ -253,14 +242,93 @@ header .menu-icon.active {
   border-radius: 20px;
 }
 
+.back-project {
+  text-align: left;
+  width: clamp(20rem, 90%, 50rem);
+  background-color: #fff;
+  border-radius: 15px;
+  margin: 2em 1em 4em;
+  padding: .75em 1.25em 2em;
+  box-shadow: 0 0 5px 5px #0000001a;
+}
+
+.back-project .about-project {
+  padding-block: 1em;
+}
+
+.back-project .about-project p {
+  color: gray;
+  font-size: .95rem;
+  line-height: 1.5rem;
+}
+
+.back-project .about-project > * {
+  padding-block: .75em;
+}
+
+.back-project .pledge-cards-container {
+  gap: 2em;
+  display: grid;
+}
+
+.back-project .pledge-cards-container .card {
+  border: 1px solid #3cb4ac;
+  border-radius: 10px;
+  flex-direction: column;
+  padding: .25em 3em .25em 1.125em;
+  display: flex;
+}
+
+.back-project .pledge-cards-container .card :nth-child(2) {
+  color: gray;
+  font-size: .95rem;
+  line-height: 1.5rem;
+}
+
+.back-project .pledge-cards-container .card > * {
+  padding: 1em 0;
+}
+
+.back-project .pledge-cards-container .card .number-left {
+  color: gray;
+}
+
+.back-project .pledge-cards-container .card .number-left span {
+  color: #000;
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.back-project .pledge-cards-container .card .button {
+  padding: 1em 1.5em;
+}
+
 html {
   font-size: 16px;
 }
 
 body {
-  min-height: calc(500vh - .1px);
+  background-color: #fafafa;
   font-family: Commissioner;
   font-weight: 400;
+}
+
+.button {
+  color: #fff;
+  letter-spacing: .5px;
+  background-color: #3cb4ac;
+  border-radius: 25px;
+  margin-right: .5em;
+  padding: 1em 2em;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 1.3rem;
+}
+
+h3 {
+  font-size: 1.1rem;
 }
 
 /*# sourceMappingURL=index.dcc9ba11.css.map */
