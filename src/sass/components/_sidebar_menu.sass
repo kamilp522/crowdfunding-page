@@ -1,48 +1,57 @@
 @use '../abstracts' as abs
 
-.sidebar::before
-    content: ''
-    display: block
-    position: fixed
-    top: 0
-    bottom: 0
-    left: 0
-    right: 0
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.15)) 
-    z-index: 1
+.sidebar
+    opacity: 0
+    transition: 0.4s ease-in-out
 
-.sidebar-wrapper
-    position: fixed
-    top: 13.5%
-    left: 10%
-    right: 10%
-    display: flex
-    min-height: 12rem
-    background-color: white
-    border-radius: 7px   
-    z-index: 3
+    &.active
+        opacity: 1
+        display: block
 
-    .sidebar-menu
+    &::before
+        opacity: 1
+        content: ''
+        display: block
+        position: fixed
+        top: 0
+        bottom: 0
+        left: 0
+        right: 0
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.15)) 
+        z-index: 997
+
+    .sidebar-wrapper
+        position: fixed
+        top: 13.5%
+        left: 10%
+        right: 10%
         display: flex
-        flex-direction: column
-        justify-content: space-between
-        flex-grow: 1
+        min-height: 12rem
+        background-color: white
+        border-radius: 7px   
+        z-index: 998
 
-        li
+        .sidebar-menu
             display: flex
-            align-items: center
-            height: 33.33%
-            border-bottom: 1px solid abs.$primary-mod-cyan
-            padding-left: 1em
+            flex-direction: column
+            justify-content: space-between
+            flex-grow: 1
 
-            a
-                color: black
-                font-weight: 500
-                font-size: 1.125rem
+            li
+                display: flex
+                align-items: center
+                height: 33.33%
+                border-bottom: 1px solid abs.$primary-mod-cyan
+                padding-left: 1em
 
-        li:last-child
-            border-bottom: none
+                a
+                    color: black
+                    font-weight: 500
+                    font-size: 1.125rem
 
-            
+            li:last-child
+                border-bottom: none
+
                 
-            
+                    
+                

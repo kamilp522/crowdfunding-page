@@ -1,0 +1,66 @@
+@use '../abstracts' as abs
+
+.backed-info
+    background-color: white
+    margin: 0 1em
+    margin-top: 2em
+    border-radius: 15px
+    padding: 1.25em
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1)
+    text-align: center
+    width: clamp(20rem, 90%, 50rem)
+
+    .backed-container
+        display: grid
+        gap: 3rem
+        padding-block: 1rem
+
+        .backed-sum
+            position: relative
+
+        .backed-sum::after
+            content: ""
+            position: absolute
+            width: 5em
+            height: 1px
+            background-color: abs.$primary-mod-cyan
+            bottom: -50%
+            transform: translateX(-50%)
+
+        .days
+            position: relative
+
+        .days::before
+            content: ""
+            position: absolute
+            width: 5em
+            height: 1px
+            background-color: abs.$primary-mod-cyan
+            bottom: 120%
+            transform: translateX(-50%)
+
+        div
+            & p
+                padding-block: 0.125em
+
+            & p:first-child
+                font-weight: 700
+                font-size: 2rem
+
+            & p:last-child
+                
+                opacity: 0.7
+        
+    .progression-bar
+        height: 1rem
+        width: 90%
+        margin: 1em auto
+        background-color: rgba(122, 122, 122, 0.2)
+        border-radius: 20px
+
+        .progress
+            height: 1rem
+            width: 5%
+            max-width: 100%
+            background-color: abs.$primary-mod-cyan
+            border-radius: 20px

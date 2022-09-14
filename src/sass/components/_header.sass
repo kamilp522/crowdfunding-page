@@ -1,7 +1,7 @@
 @use '../abstracts' as abs
     
 header
-    min-height: 20rem
+    min-height: 40vh
 
     .header-img-wrapper
         position: absolute
@@ -14,7 +14,7 @@ header
         align-items: center
         justify-content: space-between
         padding: 1.5em 1.5em 1.5em 1em 
-        z-index: 2
+        z-index: 999
         
     .header-logo 
         color: white
@@ -22,4 +22,10 @@ header
         font-size: 2rem
 
     .menu-icon
-        width: 1.25rem
+        height: 2.5rem
+        line-height: 2.5rem
+        padding: 0.5em
+        cursor: pointer
+
+        &.active
+            content: url(../../images/icon-close-menu.svg)
