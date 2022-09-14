@@ -303,6 +303,16 @@ header .menu-icon.active {
   padding: 1em 1.5em;
 }
 
+.selection-modal {
+  text-align: center;
+  width: clamp(20rem, 90%, 50rem);
+  background-color: #fff;
+  border-radius: 15px;
+  margin: 2em 1em 0;
+  padding: 1.25em;
+  box-shadow: 0 0 5px 5px #0000001a;
+}
+
 html {
   font-size: 16px;
 }
