@@ -534,10 +534,13 @@ function hmrAcceptRun(bundle, id) {
 },{}],"gLLPy":[function(require,module,exports) {
 var _sidebar = require("./modules/sidebar");
 var _progressBar = require("./modules/progress_bar");
+var _selectionModal = require("./modules/selection_modal");
 _sidebar.menu_icon.addEventListener("click", _sidebar.openSidebar);
 _progressBar.setProgressBar();
+_selectionModal.closeModalIcon.addEventListener("click", _selectionModal.closeModal);
+_selectionModal.chosenCircles.forEach((circle)=>circle.addEventListener("click", _selectionModal.chooseReward));
 
-},{"./modules/sidebar":"bU06I","./modules/progress_bar":"9XBYW"}],"bU06I":[function(require,module,exports) {
+},{"./modules/sidebar":"bU06I","./modules/progress_bar":"9XBYW","./modules/selection_modal":"gVDft"}],"bU06I":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "menu_icon", ()=>menu_icon);
@@ -590,6 +593,31 @@ const progress = document.querySelector(".progress");
 const money = document.querySelector(".current-amount span").textContent;
 const setProgressBar = ()=>{
     progress.style.width = `${money / 1000}%`;
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gVDft":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "chosenCircles", ()=>chosenCircles);
+parcelHelpers.export(exports, "closeModalIcon", ()=>closeModalIcon);
+parcelHelpers.export(exports, "selectionModal", ()=>selectionModal);
+parcelHelpers.export(exports, "closeModal", ()=>closeModal);
+parcelHelpers.export(exports, "chooseReward", ()=>chooseReward);
+const chosenCircles = [
+    ...document.querySelectorAll(".choose")
+];
+const closeModalIcon = document.querySelector(".close-selection-modal");
+const selectionModal = document.querySelector(".selection-modal");
+const closeModal = ()=>{
+    selectionModal.classList.toggle("active");
+};
+const chooseReward = (e)=>{
+    e.target.classList.toggle("active");
+    let id = e.target.id.slice(-1);
+    const currentCard = document.getElementById(`modal-card-${id}`);
+    currentCard.classList.toggle("active");
+    const currentEnterPledge = document.getElementById(`enter-pledge-${id}`);
+    currentEnterPledge.classList.toggle("active");
 };
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["8TtF2","gLLPy"], "gLLPy", "parcelRequire750c")

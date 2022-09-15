@@ -2,64 +2,113 @@
 @use 'card_default'
 
 .selection-modal
-    background-color: white
-    margin: 2em 1em 0
-    border-radius: 15px
-    padding: 1.25em
-    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1)
-    text-align: left
-    width: clamp(20rem, 90%, 50rem)
+    display: none
+    position: absolute
+    top: 0
+    left: 0
 
-    .modal-intro-container
-        padding-block: 1em
+    &.active
+        display: block
 
-        & > * 
+    &::before
+        opacity: 1
+        content: ''
+        display: block
+        position: fixed
+        top: 0
+        bottom: 0
+        left: 0
+        right: 0
+        background: rgba(0, 0, 0, 0.6) 
+
+    .selection-modal-wrapper
+        position: relative
+        top: 0
+        left: 0
+        background-color: white
+        margin: 2em 1em 0
+        border-radius: 15px
+        padding: 1.25em
+        box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1)
+        text-align: left
+        width: clamp(20rem, 90%, 50rem)    
+
+        .modal-intro-container
             padding-block: 1em
 
-        .title-container
-            display: flex
-            justify-content: space-between
+            & > * 
+                padding-block: 1em
+
+            .title-container
+                display: flex
+                justify-content: space-between
+                align-items: center
+                
+                .close-selection-modal
+                    cursor: pointer
+                    width: 2.5rem
+                    height: 2.5rem
+                    padding: 0.5em
+
+            p
+                color: grey
+                font-size: 0.95rem
+                line-height: 1.375rem
+
+        .choose
+            position: relative
+            display: inline-flex
+            justify-content: center
             align-items: center
-            
-            img
-                cursor: pointer
-                width: 1.25rem
-                height: 1.25rem
-
-        p
-            color: grey
-            font-size: 0.95rem
-            line-height: 1.375rem
-
-    .choose
-        display: inline-flex
-        justify-content: center
-        align-items: center
-        height: 1.375rem
-        width: 1.375rem
-        line-height: 1.375rem
-        border-radius: 50%
-        border: 1px solid abs.$primary-mod-cyan
-        margin-right: .75em
-        cursor: pointer
-        
-
-        .chosen
-            display: block
-            height: 0.8rem
-            width: 0.8rem
+            height: 1.5rem
+            width: 1.5rem
+            line-height: 1.5rem
             border-radius: 50%
-            
+            border: 1px solid abs.$primary-mod-cyan
+            margin-right: .75em
+            cursor: pointer
+
             &.active
+                background-clip: content-box
+                padding: 0.25em
                 background-color: abs.$primary-mod-cyan
 
-    .card.active
-        border: 3px solid abs.$primary-mod-cyan
+        .card.active
+            box-shadow: 0 0 0 2.5px abs.$primary-mod-cyan
 
-    .enter-pledge
+        .enter-pledge
+            display: none
 
-        .input-button-container
-            display: flex
+        .enter-pledge.active
+            display: block
+            border-top: 1px solid abs.$primary-mod-cyan
 
-            .button
-                color: white
+            p
+                text-align: center
+                color: grey
+                margin-bottom: 1.25em
+
+            .input-button-container
+                position: relative
+                display: flex
+                width: 100%
+
+                .dollar-sign
+                    color: grey
+                    margin: auto 0
+                    position: relative
+                    left: 8.5%
+                    z-index: 1
+
+                input
+                    position: relative
+                    width: 50%
+                    margin-right: 1em
+                    border-radius: 25px
+                    border: 1px solid grey
+                    text-align: center
+                    color: black
+                    font-weight: 500
+
+                .button-wrapper
+                    width: 50%
