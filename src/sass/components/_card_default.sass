@@ -1,0 +1,32 @@
+@use '../abstracts' as abs
+    
+.pledge-cards-container
+    display: grid
+    gap: 2em
+
+    .card
+        display: flex
+        flex-direction: column
+        padding: 0.25em 2em 0.25em 1.125em 
+        border: 1px solid abs.$primary-mod-cyan
+        border-radius: 10px
+
+        & :nth-child(2)
+            color: grey
+            line-height: 1.5rem
+            font-size: 0.95rem
+
+        & > *
+            padding: 1em 0
+
+        & .number-left 
+                color: grey
+
+
+        & .number-left span
+            font-weight: 700
+            font-size: 1.75rem
+            color: black
+
+        & .button
+            padding: 1em 1.5em
