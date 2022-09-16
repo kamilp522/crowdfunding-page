@@ -1,19 +1,29 @@
 export const chosenCircles = [...document.querySelectorAll(".choose")];
 export const closeModalIcon = document.querySelector(".close-selection-modal");
 export const selectionModal = document.querySelector(".selection-modal");
-// export const cards = [...document.querySelectorAll(".selection-modal .card")];
+export const cards = [...document.querySelectorAll(".selection-modal .card")];
+export const openModalButtons = [
+  ...document.querySelectorAll(".back-project-button"),
+];
 
 export const closeModal = () => {
-  selectionModal.classList.toggle("active");
+  selectionModal.classList.remove("active");
+  cards.forEach((card) => {
+    card.classList.remove("active");
+  });
+};
+
+export const openModal = () => {
+  selectionModal.classList.add("active");
+  // window.scrollTo({ top: 0, behavior: "smooth" });
 };
 
 export const chooseReward = (e) => {
-  e.target.classList.toggle("active");
-  let id = e.target.id.slice(-1);
+  let currentId = e.target.id.slice(-1);
 
-  const currentCard = document.getElementById(`modal-card-${id}`);
-  currentCard.classList.toggle("active");
-
-  const currentEnterPledge = document.getElementById(`enter-pledge-${id}`);
-  currentEnterPledge.classList.toggle("active");
+  cards.forEach((card) => {
+    if (card.id !== `modal-card-${currentId}`) {
+      card.classList.remove("active");
+    } else card.classList.toggle("active");
+  });
 };

@@ -61,7 +61,7 @@ ul {
 }
 
 .pledge-cards-container .card > * {
-  padding: 1.25em 0;
+  padding: 1.125em 0;
 }
 
 .pledge-cards-container .card .number-left {
@@ -76,6 +76,11 @@ ul {
 
 .pledge-cards-container .card .button {
   padding: 1em 1.5em;
+}
+
+.pledge-cards-container .card .title-pledge-container p {
+  color: #3cb4ac;
+  padding-top: .125em;
 }
 
 header {
@@ -385,38 +390,38 @@ header .menu-icon.active {
   position: relative;
 }
 
-.selection-modal .selection-modal-wrapper .choose.active {
-  background-color: #3cb4ac;
-  background-clip: content-box;
-  padding: .25em;
+.selection-modal .selection-modal-wrapper .enter-pledge {
+  display: none;
 }
 
 .selection-modal .selection-modal-wrapper .card.active {
   box-shadow: 0 0 0 2.5px #3cb4ac;
 }
 
-.selection-modal .selection-modal-wrapper .enter-pledge {
-  display: none;
+.selection-modal .selection-modal-wrapper .card.active .choose {
+  background-color: #3cb4ac;
+  background-clip: content-box;
+  padding: .25em;
 }
 
-.selection-modal .selection-modal-wrapper .enter-pledge.active {
+.selection-modal .selection-modal-wrapper .card.active .enter-pledge {
   border-top: 1px solid #3cb4ac;
   display: block;
 }
 
-.selection-modal .selection-modal-wrapper .enter-pledge.active p {
+.selection-modal .selection-modal-wrapper .card.active .enter-pledge p {
   text-align: center;
   color: gray;
   margin-bottom: 1.25em;
 }
 
-.selection-modal .selection-modal-wrapper .enter-pledge.active .input-button-container {
+.selection-modal .selection-modal-wrapper .card.active .input-button-container {
   width: 100%;
   display: flex;
   position: relative;
 }
 
-.selection-modal .selection-modal-wrapper .enter-pledge.active .input-button-container .dollar-sign {
+.selection-modal .selection-modal-wrapper .card.active .input-button-container .dollar-sign {
   color: gray;
   z-index: 1;
   margin: auto 0;
@@ -424,7 +429,7 @@ header .menu-icon.active {
   left: 8.5%;
 }
 
-.selection-modal .selection-modal-wrapper .enter-pledge.active .input-button-container input {
+.selection-modal .selection-modal-wrapper .card.active .input-button-container input {
   width: 50%;
   text-align: center;
   color: #000;
@@ -435,7 +440,7 @@ header .menu-icon.active {
   position: relative;
 }
 
-.selection-modal .selection-modal-wrapper .enter-pledge.active .input-button-container .button-wrapper {
+.selection-modal .selection-modal-wrapper .card.active .input-button-container .button-wrapper {
   width: 50%;
 }
 

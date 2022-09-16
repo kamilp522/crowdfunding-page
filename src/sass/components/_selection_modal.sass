@@ -68,25 +68,26 @@
             margin-right: .75em
             cursor: pointer
 
-            &.active
-                background-clip: content-box
-                padding: 0.25em
-                background-color: abs.$primary-mod-cyan
+        .enter-pledge
+            display: none
+
 
         .card.active
             box-shadow: 0 0 0 2.5px abs.$primary-mod-cyan
 
-        .enter-pledge
-            display: none
+            .choose
+                background-clip: content-box
+                padding: 0.25em
+                background-color: abs.$primary-mod-cyan
 
-        .enter-pledge.active
-            display: block
-            border-top: 1px solid abs.$primary-mod-cyan
+            .enter-pledge
+                display: block
+                border-top: 1px solid abs.$primary-mod-cyan
 
-            p
-                text-align: center
-                color: grey
-                margin-bottom: 1.25em
+                p
+                    text-align: center
+                    color: grey
+                    margin-bottom: 1.25em
 
             .input-button-container
                 position: relative

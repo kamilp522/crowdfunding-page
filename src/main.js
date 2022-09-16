@@ -11,6 +11,10 @@ selection_modal_module.closeModalIcon.addEventListener(
   selection_modal_module.closeModal
 );
 
+selection_modal_module.openModalButtons.forEach((button) => {
+  button.addEventListener("click", selection_modal_module.openModal);
+});
+
 selection_modal_module.chosenCircles.forEach((circle) =>
   circle.addEventListener("click", selection_modal_module.chooseReward)
 );

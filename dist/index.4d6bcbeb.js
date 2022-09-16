@@ -538,6 +538,9 @@ var _selectionModal = require("./modules/selection_modal");
 _sidebar.menu_icon.addEventListener("click", _sidebar.openSidebar);
 _progressBar.setProgressBar();
 _selectionModal.closeModalIcon.addEventListener("click", _selectionModal.closeModal);
+_selectionModal.openModalButtons.forEach((button)=>{
+    button.addEventListener("click", _selectionModal.openModal);
+});
 _selectionModal.chosenCircles.forEach((circle)=>circle.addEventListener("click", _selectionModal.chooseReward));
 
 },{"./modules/sidebar":"bU06I","./modules/progress_bar":"9XBYW","./modules/selection_modal":"gVDft"}],"bU06I":[function(require,module,exports) {
@@ -601,23 +604,38 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "chosenCircles", ()=>chosenCircles);
 parcelHelpers.export(exports, "closeModalIcon", ()=>closeModalIcon);
 parcelHelpers.export(exports, "selectionModal", ()=>selectionModal);
+parcelHelpers.export(exports, "cards", ()=>cards);
+parcelHelpers.export(exports, "openModalButtons", ()=>openModalButtons);
 parcelHelpers.export(exports, "closeModal", ()=>closeModal);
+parcelHelpers.export(exports, "openModal", ()=>openModal);
 parcelHelpers.export(exports, "chooseReward", ()=>chooseReward);
 const chosenCircles = [
     ...document.querySelectorAll(".choose")
 ];
 const closeModalIcon = document.querySelector(".close-selection-modal");
 const selectionModal = document.querySelector(".selection-modal");
+const cards = [
+    ...document.querySelectorAll(".selection-modal .card")
+];
+const openModalButtons = [
+    ...document.querySelectorAll(".back-project-button"), 
+];
 const closeModal = ()=>{
-    selectionModal.classList.toggle("active");
+    selectionModal.classList.remove("active");
+    cards.forEach((card)=>{
+        card.classList.remove("active");
+    });
+};
+const openModal = ()=>{
+    selectionModal.classList.add("active");
+// window.scrollTo({ top: 0, behavior: "smooth" });
 };
 const chooseReward = (e)=>{
-    e.target.classList.toggle("active");
-    let id = e.target.id.slice(-1);
-    const currentCard = document.getElementById(`modal-card-${id}`);
-    currentCard.classList.toggle("active");
-    const currentEnterPledge = document.getElementById(`enter-pledge-${id}`);
-    currentEnterPledge.classList.toggle("active");
+    let currentId = e.target.id.slice(-1);
+    cards.forEach((card)=>{
+        if (card.id !== `modal-card-${currentId}`) card.classList.remove("active");
+        else card.classList.toggle("active");
+    });
 };
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["8TtF2","gLLPy"], "gLLPy", "parcelRequire750c")
