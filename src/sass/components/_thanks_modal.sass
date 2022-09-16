@@ -1,0 +1,22 @@
+@use '../abstracts' as abs
+
+.thanks-modal 
+    margin: 0 auto
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    position: relative
+    background-color: white
+    border-radius: 15px
+    padding: 1.25em
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1)
+    text-align: center
+    width: clamp(20rem, 90%, 50rem)
+
+    &  *
+        padding-block: 1em
+
+    .thanks-modal-img-wrapper
+        display: grid
+        justify-content: center

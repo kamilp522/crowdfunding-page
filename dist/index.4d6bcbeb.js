@@ -535,6 +535,7 @@ function hmrAcceptRun(bundle, id) {
 var _sidebar = require("./modules/sidebar");
 var _progressBar = require("./modules/progress_bar");
 var _selectionModal = require("./modules/selection_modal");
+var _utilityFunctions = require("./modules/utility_functions/utility_functions");
 _sidebar.menu_icon.addEventListener("click", _sidebar.openSidebar);
 _progressBar.setProgressBar();
 _selectionModal.closeModalIcon.addEventListener("click", _selectionModal.closeModal);
@@ -542,8 +543,16 @@ _selectionModal.openModalButtons.forEach((button)=>{
     button.addEventListener("click", _selectionModal.openModal);
 });
 _selectionModal.chosenCircles.forEach((circle)=>circle.addEventListener("click", _selectionModal.chooseReward));
+_selectionModal.inputs.forEach((input)=>{
+    input.addEventListener("keydown", (0, _utilityFunctions.onlyNumberKey));
+});
+_selectionModal.inputs.forEach((input)=>{
+    input.addEventListener("change", (0, _utilityFunctions.checkNumberRange));
+}); // selection_modal_module.selectPledgeButtons.forEach((button) => {
+ //   button.addEventListener("click", checkNumberRange);
+ // });
 
-},{"./modules/sidebar":"bU06I","./modules/progress_bar":"9XBYW","./modules/selection_modal":"gVDft"}],"bU06I":[function(require,module,exports) {
+},{"./modules/sidebar":"bU06I","./modules/progress_bar":"9XBYW","./modules/selection_modal":"gVDft","./modules/utility_functions/utility_functions":"e5cHS"}],"bU06I":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "menu_icon", ()=>menu_icon);
@@ -606,6 +615,9 @@ parcelHelpers.export(exports, "closeModalIcon", ()=>closeModalIcon);
 parcelHelpers.export(exports, "selectionModal", ()=>selectionModal);
 parcelHelpers.export(exports, "cards", ()=>cards);
 parcelHelpers.export(exports, "openModalButtons", ()=>openModalButtons);
+parcelHelpers.export(exports, "inputs", ()=>inputs);
+parcelHelpers.export(exports, "selectPledgeButtons", ()=>selectPledgeButtons);
+parcelHelpers.export(exports, "enterPledge", ()=>enterPledge);
 parcelHelpers.export(exports, "closeModal", ()=>closeModal);
 parcelHelpers.export(exports, "openModal", ()=>openModal);
 parcelHelpers.export(exports, "chooseReward", ()=>chooseReward);
@@ -620,15 +632,29 @@ const cards = [
 const openModalButtons = [
     ...document.querySelectorAll(".back-project-button"), 
 ];
+const inputs = [
+    ...document.querySelectorAll(".enter-pledge input")
+];
+const selectPledgeButtons = [
+    ...document.querySelectorAll(".select-pledge-button"), 
+];
+const enterPledge = (e)=>{
+    console.log(e.target.value);
+};
 const closeModal = ()=>{
     selectionModal.classList.remove("active");
     cards.forEach((card)=>{
         card.classList.remove("active");
     });
 };
-const openModal = ()=>{
+const openModal = (e)=>{
     selectionModal.classList.add("active");
-// window.scrollTo({ top: 0, behavior: "smooth" });
+    let currentId = e.target.id.slice(-1);
+    document.getElementById(`modal-card-${currentId}`).scrollIntoView({
+        block: "start",
+        behavior: "smooth"
+    });
+    chooseReward(e);
 };
 const chooseReward = (e)=>{
     let currentId = e.target.id.slice(-1);
@@ -636,6 +662,51 @@ const chooseReward = (e)=>{
         if (card.id !== `modal-card-${currentId}`) card.classList.remove("active");
         else card.classList.toggle("active");
     });
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"e5cHS":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "onlyNumberKey", ()=>onlyNumberKey);
+parcelHelpers.export(exports, "checkNumberRange", ()=>checkNumberRange);
+const onlyNumberKey = (e)=>{
+    const key = String.fromCharCode(e.keyCode);
+    if (/[0-9]/.test(key) && !e.shiftKey) return true;
+    else if (e.keyCode == 8) return true;
+    else e.preventDefault();
+};
+const checkNumberRange = (e)=>{
+    const input = e.target.value;
+    const inputId = Number(e.target.id.slice(-1));
+    const btn = document.getElementById(`pledge-button-${inputId}`);
+    const disableBtn = ()=>{
+        btn.disabled = true;
+        btn.style.background = "grey";
+    };
+    const unableBtn = ()=>{
+        btn.disabled = false;
+        btn.style.background = "hsl(176, 50%, 47%)";
+    };
+    if (inputId === 1) {
+        if (input == 0 || input >= 25) {
+            disableBtn();
+            alert("Pledge of this category has to be worth $25 at most!");
+        } else unableBtn();
+    }
+    if (inputId === 2) {
+        if (input < 25 || input >= 75) {
+            disableBtn();
+            alert("Pledge of this category has to be worth beetwen $25 and $75!");
+        } else unableBtn();
+    }
+    if (inputId === 3) {
+        if (input < 75) {
+            btn.disabled = true;
+            btn.style.background = "grey";
+            alert("Pledge of this category has to be worth more than $75");
+        } else unableBtn();
+    }
+    console.log(btn.id);
 };
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["8TtF2","gLLPy"], "gLLPy", "parcelRequire750c")
