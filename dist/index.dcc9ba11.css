@@ -474,10 +474,6 @@ header .menu-icon.active {
   box-shadow: 0 0 5px 5px #0000001a;
 }
 
-.thanks-modal * {
-  padding-block: 1em;
-}
-
 .thanks-modal .thanks-modal-img-wrapper {
   justify-content: center;
   display: grid;
