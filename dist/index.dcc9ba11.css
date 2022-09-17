@@ -40,6 +40,10 @@ ul {
   font-weight: 700;
 }
 
+.button:disabled {
+  background-color: #444;
+}
+
 .pledge-cards-container {
   gap: 2em;
   display: grid;
@@ -244,6 +248,7 @@ header .menu-icon.active {
   border-radius: 15px;
   margin: 2em 1em 0;
   padding: 1.25em;
+  scroll-margin-top: 50px;
   box-shadow: 0 0 5px 5px #0000001a;
 }
 
@@ -304,7 +309,7 @@ header .menu-icon.active {
 
 .backed-info .progression-bar .progress {
   height: 1rem;
-  width: 5%;
+  min-width: 5%;
   max-width: 100%;
   background-color: #3cb4ac;
   border-radius: 20px;
@@ -460,6 +465,27 @@ header .menu-icon.active {
 }
 
 .thanks-modal {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.thanks-modal.active {
+  display: block;
+}
+
+.thanks-modal:before {
+  opacity: 1;
+  content: "";
+  background: #0009;
+  display: block;
+  position: fixed;
+  inset: 0;
+}
+
+.thanks-modal .thanks-modal-container {
   text-align: center;
   width: clamp(20rem, 90%, 50rem);
   background-color: #fff;
@@ -467,16 +493,31 @@ header .menu-icon.active {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
-  padding: 1.25em;
+  margin: 0 1em;
+  padding: 1.75em 1.25em;
   display: flex;
-  position: relative;
+  position: absolute;
+  top: 0;
   box-shadow: 0 0 5px 5px #0000001a;
 }
 
-.thanks-modal .thanks-modal-img-wrapper {
+.thanks-modal .thanks-modal-container * {
+  padding-block: .5em;
+}
+
+.thanks-modal .thanks-modal-container .thanks-modal-img-wrapper {
   justify-content: center;
   display: grid;
+}
+
+.thanks-modal .thanks-modal-container p {
+  color: gray;
+  padding-block: 1.25em;
+  line-height: 1.375rem;
+}
+
+.thanks-modal .thanks-modal-container .button {
+  padding: 1.125em 2.5em;
 }
 
 html {

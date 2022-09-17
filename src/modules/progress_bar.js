@@ -1,6 +1,9 @@
 export const progress = document.querySelector(".progress");
-export const money = document.querySelector(".current-amount span").textContent;
+export const money = document.querySelector(".current-amount span");
 
-export const setProgressBar = () => {
-  progress.style.width = `${money / 1000}%`;
+export const moneyParsed = money.textContent.split(",").join("");
+
+export const setProgressBar = (m) => {
+  progress.style.width = `${m / 1000}%`;
+  console.log(m);
 };

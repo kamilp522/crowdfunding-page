@@ -532,12 +532,13 @@ function hmrAcceptRun(bundle, id) {
 }
 
 },{}],"gLLPy":[function(require,module,exports) {
-var _sidebar = require("./modules/sidebar");
-var _progressBar = require("./modules/progress_bar");
-var _selectionModal = require("./modules/selection_modal");
 var _utilityFunctions = require("./modules/utility_functions/utility_functions");
+var _sidebar = require("./modules/sidebar");
+var _selectionModal = require("./modules/selection_modal");
+var _thanksModal = require("./modules/thanks_modal");
+var _progressBar = require("./modules/progress_bar");
 _sidebar.menu_icon.addEventListener("click", _sidebar.openSidebar);
-_progressBar.setProgressBar();
+_progressBar.setProgressBar(_progressBar.moneyParsed);
 _selectionModal.closeModalIcon.addEventListener("click", _selectionModal.closeModal);
 _selectionModal.openModalButtons.forEach((button)=>{
     button.addEventListener("click", _selectionModal.openModal);
@@ -547,12 +548,20 @@ _selectionModal.inputs.forEach((input)=>{
     input.addEventListener("keydown", (0, _utilityFunctions.onlyNumberKey));
 });
 _selectionModal.inputs.forEach((input)=>{
-    input.addEventListener("change", (0, _utilityFunctions.checkNumberRange));
-}); // selection_modal_module.selectPledgeButtons.forEach((button) => {
- //   button.addEventListener("click", checkNumberRange);
- // });
+    input.addEventListener("input", (0, _utilityFunctions.checkNumberRange));
+});
+_selectionModal.selectPledgeButtons.forEach((button)=>{
+    button.disabled = true;
+});
+_selectionModal.selectPledgeButtons.forEach((button)=>{
+    button.addEventListener("click", _thanksModal.openModal);
+});
+_thanksModal.thanks_modal_button.addEventListener("click", _thanksModal.closeModal);
+_selectionModal.inputs.forEach((input)=>{
+    input.addEventListener("input", _selectionModal.enterPledge);
+});
 
-},{"./modules/sidebar":"bU06I","./modules/progress_bar":"9XBYW","./modules/selection_modal":"gVDft","./modules/utility_functions/utility_functions":"e5cHS"}],"bU06I":[function(require,module,exports) {
+},{"./modules/sidebar":"bU06I","./modules/progress_bar":"9XBYW","./modules/selection_modal":"gVDft","./modules/utility_functions/utility_functions":"e5cHS","./modules/thanks_modal":"7H8Je"}],"bU06I":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "menu_icon", ()=>menu_icon);
@@ -600,11 +609,14 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "progress", ()=>progress);
 parcelHelpers.export(exports, "money", ()=>money);
+parcelHelpers.export(exports, "moneyParsed", ()=>moneyParsed);
 parcelHelpers.export(exports, "setProgressBar", ()=>setProgressBar);
 const progress = document.querySelector(".progress");
-const money = document.querySelector(".current-amount span").textContent;
-const setProgressBar = ()=>{
-    progress.style.width = `${money / 1000}%`;
+const money = document.querySelector(".current-amount span");
+const moneyParsed = money.textContent.split(",").join("");
+const setProgressBar = (m)=>{
+    progress.style.width = `${m / 1000}%`;
+    console.log(m);
 };
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gVDft":[function(require,module,exports) {
@@ -617,6 +629,7 @@ parcelHelpers.export(exports, "cards", ()=>cards);
 parcelHelpers.export(exports, "openModalButtons", ()=>openModalButtons);
 parcelHelpers.export(exports, "inputs", ()=>inputs);
 parcelHelpers.export(exports, "selectPledgeButtons", ()=>selectPledgeButtons);
+parcelHelpers.export(exports, "declaredPledge", ()=>declaredPledge);
 parcelHelpers.export(exports, "enterPledge", ()=>enterPledge);
 parcelHelpers.export(exports, "closeModal", ()=>closeModal);
 parcelHelpers.export(exports, "openModal", ()=>openModal);
@@ -638,8 +651,10 @@ const inputs = [
 const selectPledgeButtons = [
     ...document.querySelectorAll(".select-pledge-button"), 
 ];
+let declaredPledge;
 const enterPledge = (e)=>{
-    console.log(e.target.value);
+    declaredPledge = e.target.value;
+// console.log(declaredPledge);
 };
 const closeModal = ()=>{
     selectionModal.classList.remove("active");
@@ -669,6 +684,7 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "onlyNumberKey", ()=>onlyNumberKey);
 parcelHelpers.export(exports, "checkNumberRange", ()=>checkNumberRange);
+var _btnFunctions = require("./btn_functions");
 const onlyNumberKey = (e)=>{
     const key = String.fromCharCode(e.keyCode);
     if (/[0-9]/.test(key) && !e.shiftKey) return true;
@@ -678,35 +694,84 @@ const onlyNumberKey = (e)=>{
 const checkNumberRange = (e)=>{
     const input = e.target.value;
     const inputId = Number(e.target.id.slice(-1));
-    const btn = document.getElementById(`pledge-button-${inputId}`);
-    const disableBtn = ()=>{
-        btn.disabled = true;
-        btn.style.background = "grey";
-    };
-    const unableBtn = ()=>{
-        btn.disabled = false;
-        btn.style.background = "hsl(176, 50%, 47%)";
-    };
     if (inputId === 1) {
-        if (input == 0 || input >= 25) {
-            disableBtn();
-            alert("Pledge of this category has to be worth $25 at most!");
-        } else unableBtn();
+        if (input == 0 || input >= 25) (0, _btnFunctions.disableBtn)(inputId);
+        else (0, _btnFunctions.unableBtn)(inputId);
     }
     if (inputId === 2) {
-        if (input < 25 || input >= 75) {
-            disableBtn();
-            alert("Pledge of this category has to be worth beetwen $25 and $75!");
-        } else unableBtn();
+        if (input < 25 || input >= 75) (0, _btnFunctions.disableBtn)(inputId);
+        else (0, _btnFunctions.unableBtn)(inputId);
     }
     if (inputId === 3) {
-        if (input < 75) {
-            btn.disabled = true;
-            btn.style.background = "grey";
-            alert("Pledge of this category has to be worth more than $75");
-        } else unableBtn();
+        if (input < 75) (0, _btnFunctions.disableBtn)(inputId);
+        else (0, _btnFunctions.unableBtn)(inputId);
     }
-    console.log(btn.id);
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./btn_functions":"c7dWn"}],"c7dWn":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "disableBtn", ()=>disableBtn);
+parcelHelpers.export(exports, "unableBtn", ()=>unableBtn);
+const disableBtn = (inputId)=>{
+    const btn = document.getElementById(`pledge-button-${inputId}`);
+    btn.disabled = true;
+};
+const unableBtn = (inputId)=>{
+    const btn = document.getElementById(`pledge-button-${inputId}`);
+    btn.disabled = false;
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7H8Je":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "thanks_modal", ()=>thanks_modal);
+parcelHelpers.export(exports, "selection_modal", ()=>selection_modal);
+parcelHelpers.export(exports, "thanks_modal_button", ()=>thanks_modal_button);
+parcelHelpers.export(exports, "backed_info", ()=>backed_info);
+parcelHelpers.export(exports, "openModal", ()=>openModal);
+parcelHelpers.export(exports, "closeModal", ()=>closeModal);
+var _backedInfo = require("./backed_info");
+var _selectionModal = require("./selection_modal");
+var _progressBar = require("./progress_bar");
+const thanks_modal = document.querySelector(".thanks-modal");
+const selection_modal = document.querySelector(".selection-modal");
+const thanks_modal_button = document.querySelector(".thanks-button");
+const backed_info = document.querySelector(".backed-info");
+const openModal = ()=>{
+    selection_modal.classList.remove("active");
+    thanks_modal.classList.add("active");
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+};
+const closeModal = ()=>{
+    thanks_modal.classList.remove("active");
+    backed_info.scrollIntoView({
+        block: "start",
+        behavior: "smooth"
+    });
+    _backedInfo.updateInfo((0, _selectionModal.declaredPledge));
+    (0, _progressBar.setProgressBar)(Number(_backedInfo.moneyParsed) + Number((0, _selectionModal.declaredPledge)));
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./backed_info":"2BieI","./selection_modal":"gVDft","./progress_bar":"9XBYW"}],"2BieI":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "moneyParsed", ()=>moneyParsed);
+parcelHelpers.export(exports, "updateInfo", ()=>updateInfo);
+let money = document.querySelector(".current-amount span");
+let backers = document.querySelector(".no-of-backers span");
+let days = document.querySelector(".no-of-days-left span");
+money.textContent = "89,914";
+backers.textContent = "5,007";
+days.textContent = "56";
+let moneyParsed = money.textContent.split(",").join("");
+let backersParsed = backers.textContent.split(",").join("");
+const updateInfo = (pledge)=>{
+    money.textContent = (Number(moneyParsed) + Number(pledge)).toLocaleString("en-US");
+    backers.textContent = (Number(backersParsed) + 1).toLocaleString("en-US");
 };
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["8TtF2","gLLPy"], "gLLPy", "parcelRequire750c")

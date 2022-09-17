@@ -9,9 +9,11 @@ export const inputs = [...document.querySelectorAll(".enter-pledge input")];
 export const selectPledgeButtons = [
   ...document.querySelectorAll(".select-pledge-button"),
 ];
+export let declaredPledge;
 
 export const enterPledge = (e) => {
-  console.log(e.target.value);
+  declaredPledge = e.target.value;
+  // console.log(declaredPledge);
 };
 
 export const closeModal = () => {
