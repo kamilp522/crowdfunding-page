@@ -142,14 +142,14 @@
       this[globalName] = mainExports;
     }
   }
-})({"lX4BT":[function(require,module,exports) {
+})({"8TtF2":[function(require,module,exports) {
 "use strict";
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d6ea1d42532a7575";
-module.bundle.HMR_BUNDLE_ID = "7055c94b59712999";
+module.bundle.HMR_BUNDLE_ID = "bed887d14d6bcbeb";
 /* global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE, chrome, browser, globalThis, __parcel__import__, __parcel__importScripts__, ServiceWorkerGlobalScope */ /*::
 import type {
   HMRAsset,
@@ -531,8 +531,275 @@ function hmrAcceptRun(bundle, id) {
     acceptedAssets[id] = true;
 }
 
-},{}],"4M6V8":[function(require,module,exports) {
+},{}],"gLLPy":[function(require,module,exports) {
+var _utilityFunctions = require("./modules/utility_functions/utility_functions");
+var _sidebar = require("./modules/sidebar");
+var _selectionModal = require("./modules/selection_modal");
+var _thanksModal = require("./modules/thanks_modal");
+var _progressBar = require("./modules/progress_bar");
+var _bookmark = require("./modules/bookmark");
+var _backedInfo = require("./modules/backed_info");
+_sidebar.menu_icon.addEventListener("click", _sidebar.openSidebar);
+_progressBar.setProgressBar(_backedInfo.moneyParsed);
+_selectionModal.closeModalIcon.addEventListener("click", _selectionModal.closeModal);
+_selectionModal.openModalButtons.forEach((button)=>{
+    button.addEventListener("click", _selectionModal.openModal);
+});
+_selectionModal.chosenCircles.forEach((circle)=>circle.addEventListener("click", _selectionModal.chooseReward));
+_selectionModal.chosenTitles.forEach((title)=>title.addEventListener("click", _selectionModal.chooseReward));
+_selectionModal.inputs.forEach((input)=>{
+    input.addEventListener("keydown", (0, _utilityFunctions.onlyNumberKey));
+});
+_selectionModal.inputs.forEach((input)=>{
+    input.addEventListener("input", (0, _utilityFunctions.checkNumberRange));
+});
+_selectionModal.selectPledgeButtons.forEach((button)=>{
+    button.disabled = true;
+});
+_selectionModal.selectPledgeButtons.forEach((button)=>{
+    button.addEventListener("click", _thanksModal.openModal);
+});
+_thanksModal.thanks_modal_button.addEventListener("click", _thanksModal.closeModal);
+_selectionModal.inputs.forEach((input)=>{
+    input.addEventListener("input", _selectionModal.enterPledge);
+});
+_bookmark.bookmark.addEventListener("click", _bookmark.markBookmark);
 
-},{}]},["lX4BT","4M6V8"], "4M6V8", "parcelRequire750c")
+},{"./modules/sidebar":"bU06I","./modules/progress_bar":"9XBYW","./modules/selection_modal":"gVDft","./modules/utility_functions/utility_functions":"e5cHS","./modules/thanks_modal":"7H8Je","./modules/bookmark":"61aDm","./modules/backed_info":"2BieI"}],"bU06I":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "menu_icon", ()=>menu_icon);
+parcelHelpers.export(exports, "sidebar", ()=>sidebar);
+parcelHelpers.export(exports, "openSidebar", ()=>openSidebar);
+const menu_icon = document.querySelector(".menu-icon");
+const sidebar = document.querySelector(".sidebar");
+const openSidebar = ()=>{
+    sidebar.classList.toggle("active");
+    menu_icon.classList.toggle("active");
+};
 
-//# sourceMappingURL=crowdfunding-page.59712999.js.map
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, "__esModule", {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === "default" || key === "__esModule" || dest.hasOwnProperty(key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}],"9XBYW":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "progress", ()=>progress);
+parcelHelpers.export(exports, "money", ()=>money);
+parcelHelpers.export(exports, "setProgressBar", ()=>setProgressBar);
+const progress = document.querySelector(".progress");
+const money = document.querySelector(".current-amount span");
+const setProgressBar = (m)=>{
+    progress.style.width = `${m / 1000}%`;
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gVDft":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "chosenCircles", ()=>chosenCircles);
+parcelHelpers.export(exports, "chosenTitles", ()=>chosenTitles);
+parcelHelpers.export(exports, "closeModalIcon", ()=>closeModalIcon);
+parcelHelpers.export(exports, "selectionModal", ()=>selectionModal);
+parcelHelpers.export(exports, "cards", ()=>cards);
+parcelHelpers.export(exports, "openModalButtons", ()=>openModalButtons);
+parcelHelpers.export(exports, "inputs", ()=>inputs);
+parcelHelpers.export(exports, "selectPledgeButtons", ()=>selectPledgeButtons);
+parcelHelpers.export(exports, "declaredPledge", ()=>declaredPledge);
+parcelHelpers.export(exports, "enterPledge", ()=>enterPledge);
+parcelHelpers.export(exports, "closeModal", ()=>closeModal);
+parcelHelpers.export(exports, "openModal", ()=>openModal);
+parcelHelpers.export(exports, "chooseReward", ()=>chooseReward);
+const chosenCircles = [
+    ...document.querySelectorAll(".choose")
+];
+const chosenTitles = [
+    ...document.querySelectorAll(".title-item")
+];
+const closeModalIcon = document.querySelector(".close-selection-modal");
+const selectionModal = document.querySelector(".selection-modal");
+const cards = [
+    ...document.querySelectorAll(".selection-modal .card")
+];
+const openModalButtons = [
+    ...document.querySelectorAll(".back-project-button"), 
+];
+const inputs = [
+    ...document.querySelectorAll(".enter-pledge input")
+];
+const selectPledgeButtons = [
+    ...document.querySelectorAll(".select-pledge-button"), 
+];
+let declaredPledge;
+const enterPledge = (e)=>{
+    declaredPledge = e.target.value;
+};
+const closeModal = ()=>{
+    selectionModal.classList.remove("active");
+    inputs.forEach((input)=>{
+        input.value = "";
+    });
+    cards.forEach((card)=>{
+        card.classList.remove("active");
+    });
+};
+const openModal = (e)=>{
+    selectionModal.classList.add("active");
+    let currentId = e.target.id.slice(-1);
+    document.getElementById(`modal-card-${currentId}`).scrollIntoView({
+        block: "start",
+        behavior: "smooth"
+    });
+    chooseReward(e);
+};
+const chooseReward = (e)=>{
+    let currentId = e.target.id.slice(-1);
+    cards.forEach((card)=>{
+        if (card.id !== `modal-card-${currentId}`) card.classList.remove("active");
+        else card.classList.toggle("active");
+    });
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"e5cHS":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "onlyNumberKey", ()=>onlyNumberKey);
+parcelHelpers.export(exports, "checkNumberRange", ()=>checkNumberRange);
+var _btnFunctions = require("./btn_functions");
+const onlyNumberKey = (e)=>{
+    const key = String.fromCharCode(e.keyCode);
+    if (/[0-9]/.test(key) && !e.shiftKey) return true;
+    else if (e.keyCode == 8) return true;
+    else e.preventDefault();
+};
+const checkNumberRange = (e)=>{
+    const input = e.target.value;
+    const inputId = Number(e.target.id.slice(-1));
+    if (inputId === 1) {
+        if (input == 0 || input >= 25) (0, _btnFunctions.disableBtn)(inputId);
+        else (0, _btnFunctions.unableBtn)(inputId);
+    }
+    if (inputId === 2) {
+        if (input < 25 || input >= 75) (0, _btnFunctions.disableBtn)(inputId);
+        else (0, _btnFunctions.unableBtn)(inputId);
+    }
+    if (inputId === 3) {
+        if (input < 75) (0, _btnFunctions.disableBtn)(inputId);
+        else (0, _btnFunctions.unableBtn)(inputId);
+    }
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./btn_functions":"c7dWn"}],"c7dWn":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "disableBtn", ()=>disableBtn);
+parcelHelpers.export(exports, "unableBtn", ()=>unableBtn);
+const disableBtn = (inputId)=>{
+    const btn = document.getElementById(`pledge-button-${inputId}`);
+    btn.disabled = true;
+};
+const unableBtn = (inputId)=>{
+    const btn = document.getElementById(`pledge-button-${inputId}`);
+    btn.disabled = false;
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7H8Je":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "thanks_modal", ()=>thanks_modal);
+parcelHelpers.export(exports, "selection_modal", ()=>selection_modal);
+parcelHelpers.export(exports, "thanks_modal_button", ()=>thanks_modal_button);
+parcelHelpers.export(exports, "backed_info", ()=>backed_info);
+parcelHelpers.export(exports, "openModal", ()=>openModal);
+parcelHelpers.export(exports, "closeModal", ()=>closeModal);
+var _backedInfo = require("./backed_info");
+var _selectionModal = require("./selection_modal");
+var _progressBar = require("./progress_bar");
+const thanks_modal = document.querySelector(".thanks-modal");
+const selection_modal = document.querySelector(".selection-modal");
+const thanks_modal_button = document.querySelector(".thanks-button");
+const backed_info = document.querySelector(".backed-info");
+const openModal = ()=>{
+    selection_modal.classList.remove("active");
+    thanks_modal.classList.add("active");
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+};
+const closeModal = ()=>{
+    thanks_modal.classList.remove("active");
+    backed_info.scrollIntoView({
+        block: "start",
+        behavior: "smooth"
+    });
+    _backedInfo.updateInfo((0, _selectionModal.declaredPledge));
+    (0, _progressBar.setProgressBar)(Number(_backedInfo.moneyParsed) + Number((0, _selectionModal.declaredPledge)));
+    (0, _selectionModal.inputs).forEach((input)=>{
+        input.value = "";
+    });
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./backed_info":"2BieI","./selection_modal":"gVDft","./progress_bar":"9XBYW"}],"2BieI":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "moneyParsed", ()=>moneyParsed);
+parcelHelpers.export(exports, "updateInfo", ()=>updateInfo);
+let money = document.querySelector(".current-amount span");
+let backers = document.querySelector(".no-of-backers span");
+let days = document.querySelector(".no-of-days-left span");
+money.textContent = "89,914";
+backers.textContent = "5,007";
+days.textContent = "56";
+let moneyParsed = money.textContent.split(",").join("");
+const updateInfo = (pledge)=>{
+    let backersParsed = backers.textContent.split(",").join("");
+    moneyParsed = money.textContent.split(",").join("");
+    money.textContent = (Number(moneyParsed) + Number(pledge)).toLocaleString("en-US");
+    backers.textContent = (Number(backersParsed) + 1).toLocaleString("en-US");
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"61aDm":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "bookmark", ()=>bookmark);
+parcelHelpers.export(exports, "bookmark_span", ()=>bookmark_span);
+parcelHelpers.export(exports, "markBookmark", ()=>markBookmark);
+const bookmark = document.querySelector(".bookmark");
+const bookmark_span = document.querySelector(".bookmark span");
+const markBookmark = (e)=>{
+    e.preventDefault();
+    bookmark.classList.toggle("active");
+    if (bookmark.classList.contains("active")) bookmark_span.textContent = "Bookmarked";
+    else if (!bookmark.classList.contains("active")) bookmark_span.textContent = "Bookmark";
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["8TtF2","gLLPy"], "gLLPy", "parcelRequire750c")
+
+//# sourceMappingURL=index.4d6bcbeb.js.map
