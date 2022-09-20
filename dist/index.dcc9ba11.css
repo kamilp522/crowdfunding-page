@@ -106,8 +106,24 @@ header {
   min-height: 40vh;
 }
 
+@media screen and (min-width: 1024px) {
+  header {
+    min-height: 55vh;
+  }
+}
+
 header .header-img-wrapper {
+  width: 100%;
   position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@media screen and (min-width: 756px) {
+  header .header-img-wrapper img {
+    content: url("image-hero-desktop.896498fd.jpg");
+    width: 100%;
+  }
 }
 
 header nav {
@@ -122,8 +138,27 @@ header nav {
 
 header .header-logo {
   color: #fff;
+  flex-grow: 1;
   font-size: 2rem;
   font-weight: 700;
+}
+
+header .header-menu {
+  display: flex;
+}
+
+@media screen and (max-width: 1024px) {
+  header .header-menu {
+    display: none;
+  }
+}
+
+header .header-menu li {
+  padding: 0 1em;
+}
+
+header .header-menu li a {
+  color: #fff;
 }
 
 header .menu-icon {
@@ -131,6 +166,12 @@ header .menu-icon {
   cursor: pointer;
   padding: .5em;
   line-height: 2.5rem;
+}
+
+@media screen and (min-width: 1024px) {
+  header .menu-icon {
+    display: none;
+  }
 }
 
 header .menu-icon.active {
@@ -212,6 +253,12 @@ header .menu-icon.active {
   padding: .65em 0;
 }
 
+@media screen and (min-width: 1024px) {
+  .welcome-info .welcome-container {
+    width: 90%;
+  }
+}
+
 .welcome-info .welcome-container .logo-mastercraft {
   align-self: center;
   margin-top: -3rem;
@@ -227,6 +274,27 @@ header .menu-icon.active {
 .welcome-info .welcome-container .btn-bkmrk-wrapper {
   justify-content: center;
   display: flex;
+}
+
+@media screen and (min-width: 1024px) {
+  .welcome-info .welcome-container .btn-bkmrk-wrapper {
+    justify-content: space-between;
+  }
+}
+
+.welcome-info .welcome-container .btn-bkmrk-wrapper .bookmark {
+  background-color: #ddd;
+  border-radius: 25px;
+  place-content: center;
+  display: flex;
+}
+
+.welcome-info .welcome-container .btn-bkmrk-wrapper .bookmark span {
+  color: gray;
+  align-self: center;
+  padding: 1em 2em 1em 1em;
+  font-weight: 700;
+  display: block;
 }
 
 .visually-hidden {
@@ -348,7 +416,8 @@ header .menu-icon.active {
 }
 
 .selection-modal.active {
-  display: block;
+  justify-content: center;
+  display: flex;
 }
 
 .selection-modal:before {
@@ -473,7 +542,8 @@ header .menu-icon.active {
 }
 
 .thanks-modal.active {
-  display: block;
+  justify-content: center;
+  display: flex;
 }
 
 .thanks-modal:before {
@@ -526,11 +596,22 @@ html {
 
 body {
   background-color: #fafafa;
+  justify-content: center;
+  margin: 0 auto;
   font-family: Commissioner;
   font-weight: 400;
+  display: flex;
+}
+
+body .website-wrapper {
+  max-width: 1080px;
+  overflow: hidden;
 }
 
 main {
+  flex-direction: column;
+  align-items: center;
+  display: flex;
   position: relative;
 }
 

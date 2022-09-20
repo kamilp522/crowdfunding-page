@@ -1,0 +1,13 @@
+$breakpoints: ("desktop": 1024px, "small_desktop": 756px)
+
+@mixin desktop
+    @media screen and (min-width: map-get($breakpoints, "desktop"))
+        @content
+        
+@mixin desktopDown
+    @media screen and (max-width: map-get($breakpoints, "desktop"))
+        @content
+
+@mixin desktopSmall
+    @media screen and (min-width: map-get($breakpoints, "small_desktop"))
+        @content
