@@ -8,10 +8,11 @@ import * as selection_modal_module from "./modules/selection_modal";
 import * as thanks_modal_module from "./modules/thanks_modal";
 import * as progress_bar_module from "./modules/progress_bar";
 import * as bookmark_module from "./modules/bookmark";
+import * as backed_info_module from "./modules/backed_info";
 
 sidebar_module.menu_icon.addEventListener("click", sidebar_module.openSidebar);
 
-progress_bar_module.setProgressBar(progress_bar_module.moneyParsed);
+progress_bar_module.setProgressBar(backed_info_module.moneyParsed);
 
 selection_modal_module.closeModalIcon.addEventListener(
   "click",

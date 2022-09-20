@@ -31,10 +31,10 @@ Users should be able to:
 
 ### Screenshots
 
-![](./screenshots/screenshot_01.png)
-![](./screenshots/screenshot_02.png)
-![](./screenshots/screenshot_03.png)
-![](./screenshots/screenshot_04.png)
+![screenshot_mobile](./screenshots/screenshot_01.png)
+![screenshot_desktop_01](./screenshots/screenshot_02.png)
+![screenshot_desktop_02](./screenshots/screenshot_03.png)
+![screenshot_desktop_03](./screenshots/screenshot_04.png)
 
 ### Links
 
