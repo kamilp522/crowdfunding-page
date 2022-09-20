@@ -1,6 +1,7 @@
 import * as backed_info_module from "./backed_info";
 import { declaredPledge } from "./selection_modal";
 import { setProgressBar } from "./progress_bar";
+import { inputs } from "./selection_modal";
 
 export const thanks_modal = document.querySelector(".thanks-modal");
 export const selection_modal = document.querySelector(".selection-modal");
@@ -23,4 +24,7 @@ export const closeModal = () => {
   setProgressBar(
     Number(backed_info_module.moneyParsed) + Number(declaredPledge)
   );
+  inputs.forEach((input) => {
+    input.value = "";
+  });
 };

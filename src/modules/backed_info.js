@@ -7,9 +7,10 @@ backers.textContent = "5,007";
 days.textContent = "56";
 
 export let moneyParsed = money.textContent.split(",").join("");
-let backersParsed = backers.textContent.split(",").join("");
 
 export const updateInfo = (pledge) => {
+  let backersParsed = backers.textContent.split(",").join("");
+  moneyParsed = money.textContent.split(",").join("");
   money.textContent = (Number(moneyParsed) + Number(pledge)).toLocaleString(
     "en-US"
   );

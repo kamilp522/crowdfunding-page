@@ -13,11 +13,14 @@ export let declaredPledge;
 
 export const enterPledge = (e) => {
   declaredPledge = e.target.value;
-  // console.log(declaredPledge);
 };
 
 export const closeModal = () => {
   selectionModal.classList.remove("active");
+
+  inputs.forEach((input) => {
+    input.value = "";
+  });
 
   cards.forEach((card) => {
     card.classList.remove("active");

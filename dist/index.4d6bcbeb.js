@@ -609,11 +609,9 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "progress", ()=>progress);
 parcelHelpers.export(exports, "money", ()=>money);
-parcelHelpers.export(exports, "moneyParsed", ()=>moneyParsed);
 parcelHelpers.export(exports, "setProgressBar", ()=>setProgressBar);
 const progress = document.querySelector(".progress");
 const money = document.querySelector(".current-amount span");
-const moneyParsed = money.textContent.split(",").join("");
 const setProgressBar = (m)=>{
     progress.style.width = `${m / 1000}%`;
     console.log(m);
@@ -654,10 +652,12 @@ const selectPledgeButtons = [
 let declaredPledge;
 const enterPledge = (e)=>{
     declaredPledge = e.target.value;
-// console.log(declaredPledge);
 };
 const closeModal = ()=>{
     selectionModal.classList.remove("active");
+    inputs.forEach((input)=>{
+        input.value = "";
+    });
     cards.forEach((card)=>{
         card.classList.remove("active");
     });
@@ -754,6 +754,9 @@ const closeModal = ()=>{
     });
     _backedInfo.updateInfo((0, _selectionModal.declaredPledge));
     (0, _progressBar.setProgressBar)(Number(_backedInfo.moneyParsed) + Number((0, _selectionModal.declaredPledge)));
+    (0, _selectionModal.inputs).forEach((input)=>{
+        input.value = "";
+    });
 };
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./backed_info":"2BieI","./selection_modal":"gVDft","./progress_bar":"9XBYW"}],"2BieI":[function(require,module,exports) {
@@ -768,8 +771,9 @@ money.textContent = "89,914";
 backers.textContent = "5,007";
 days.textContent = "56";
 let moneyParsed = money.textContent.split(",").join("");
-let backersParsed = backers.textContent.split(",").join("");
 const updateInfo = (pledge)=>{
+    let backersParsed = backers.textContent.split(",").join("");
+    moneyParsed = money.textContent.split(",").join("");
     money.textContent = (Number(moneyParsed) + Number(pledge)).toLocaleString("en-US");
     backers.textContent = (Number(backersParsed) + 1).toLocaleString("en-US");
 };

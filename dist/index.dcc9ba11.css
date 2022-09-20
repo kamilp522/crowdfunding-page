@@ -534,16 +534,6 @@ main {
   position: relative;
 }
 
-.button {
-  color: #fff;
-  letter-spacing: .5px;
-  background-color: #3cb4ac;
-  border-radius: 25px;
-  margin-right: .5em;
-  padding: 1em 2em;
-  font-weight: 700;
-}
-
 h2 {
   font-size: 1.3rem;
 }
