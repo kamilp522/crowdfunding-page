@@ -1,4 +1,5 @@
 @use '../abstracts' as abs
+@use '../_breakpoints' as br
 
 .button
     background-color: abs.$primary-mod-cyan
@@ -10,4 +11,12 @@
     margin-right: 0.5em
 
     &:disabled
-        background-color: #444
+        background-color: abs.$neutral-dark-grey
+
+    &:hover
+        @include br.desktop
+        cursor: pointer
+        background-color: abs.$neutral-dark-grey
+
+    
+                

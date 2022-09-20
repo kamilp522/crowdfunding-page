@@ -1,8 +1,12 @@
 @use '../abstracts' as abs
+@use '../_breakpoints' as br
     
 .pledge-cards-container
     display: grid
     gap: 2em
+
+    @include br.desktop
+        padding: 0 1.5em
 
     .card
         display: flex
@@ -19,7 +23,7 @@
             user-select: none
 
         & p:nth-child(2)
-            color: grey
+            color: abs.$neutral-dark-grey
             line-height: 1.5rem
             font-size: 0.95rem
 
@@ -27,12 +31,17 @@
             padding: 1.125em 0
 
         & .number-left 
-                color: grey
+                color: abs.$neutral-dark-grey
 
 
         & .number-left span
             font-weight: 700
             font-size: 1.75rem
+            color: black
+
+        & .number-left-desktop span
+            font-weight: 700
+            font-size: 1.25rem
             color: black
 
         & .button
@@ -42,13 +51,27 @@
             display: flex
             align-items: center
 
-            .title-pledge-container 
+        .title-pledge-container 
 
-                p
-                    padding-top: 0.125em
-                    line-height: 1.5rem
-                    font-size: 0.95rem  
-                    color: abs.$primary-mod-cyan
+            @include br.desktop
+                display: flex
+                justify-content: space-between
+                align-items: center
 
+            p
+                padding-top: 0.125em
+                line-height: 1.5rem
+                font-size: 0.95rem  
+                color: abs.$primary-mod-cyan
 
-        
+        .num-btn-container
+            padding-top: 0
+
+            @include br.desktop
+                display: flex
+                justify-content: space-between
+                align-items: center
+
+            & > *
+                padding: 0.5em 0
+

@@ -537,6 +537,7 @@ var _sidebar = require("./modules/sidebar");
 var _selectionModal = require("./modules/selection_modal");
 var _thanksModal = require("./modules/thanks_modal");
 var _progressBar = require("./modules/progress_bar");
+var _bookmark = require("./modules/bookmark");
 _sidebar.menu_icon.addEventListener("click", _sidebar.openSidebar);
 _progressBar.setProgressBar(_progressBar.moneyParsed);
 _selectionModal.closeModalIcon.addEventListener("click", _selectionModal.closeModal);
@@ -544,6 +545,7 @@ _selectionModal.openModalButtons.forEach((button)=>{
     button.addEventListener("click", _selectionModal.openModal);
 });
 _selectionModal.chosenCircles.forEach((circle)=>circle.addEventListener("click", _selectionModal.chooseReward));
+_selectionModal.chosenTitles.forEach((title)=>title.addEventListener("click", _selectionModal.chooseReward));
 _selectionModal.inputs.forEach((input)=>{
     input.addEventListener("keydown", (0, _utilityFunctions.onlyNumberKey));
 });
@@ -560,8 +562,9 @@ _thanksModal.thanks_modal_button.addEventListener("click", _thanksModal.closeMod
 _selectionModal.inputs.forEach((input)=>{
     input.addEventListener("input", _selectionModal.enterPledge);
 });
+_bookmark.bookmark.addEventListener("click", _bookmark.markBookmark);
 
-},{"./modules/sidebar":"bU06I","./modules/progress_bar":"9XBYW","./modules/selection_modal":"gVDft","./modules/utility_functions/utility_functions":"e5cHS","./modules/thanks_modal":"7H8Je"}],"bU06I":[function(require,module,exports) {
+},{"./modules/sidebar":"bU06I","./modules/progress_bar":"9XBYW","./modules/selection_modal":"gVDft","./modules/utility_functions/utility_functions":"e5cHS","./modules/thanks_modal":"7H8Je","./modules/bookmark":"61aDm"}],"bU06I":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "menu_icon", ()=>menu_icon);
@@ -614,13 +617,13 @@ const progress = document.querySelector(".progress");
 const money = document.querySelector(".current-amount span");
 const setProgressBar = (m)=>{
     progress.style.width = `${m / 1000}%`;
-    console.log(m);
 };
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gVDft":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "chosenCircles", ()=>chosenCircles);
+parcelHelpers.export(exports, "chosenTitles", ()=>chosenTitles);
 parcelHelpers.export(exports, "closeModalIcon", ()=>closeModalIcon);
 parcelHelpers.export(exports, "selectionModal", ()=>selectionModal);
 parcelHelpers.export(exports, "cards", ()=>cards);
@@ -634,6 +637,9 @@ parcelHelpers.export(exports, "openModal", ()=>openModal);
 parcelHelpers.export(exports, "chooseReward", ()=>chooseReward);
 const chosenCircles = [
     ...document.querySelectorAll(".choose")
+];
+const chosenTitles = [
+    ...document.querySelectorAll(".title-item")
 ];
 const closeModalIcon = document.querySelector(".close-selection-modal");
 const selectionModal = document.querySelector(".selection-modal");
@@ -776,6 +782,21 @@ const updateInfo = (pledge)=>{
     moneyParsed = money.textContent.split(",").join("");
     money.textContent = (Number(moneyParsed) + Number(pledge)).toLocaleString("en-US");
     backers.textContent = (Number(backersParsed) + 1).toLocaleString("en-US");
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"61aDm":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "bookmark", ()=>bookmark);
+parcelHelpers.export(exports, "bookmark_span", ()=>bookmark_span);
+parcelHelpers.export(exports, "markBookmark", ()=>markBookmark);
+const bookmark = document.querySelector(".bookmark");
+const bookmark_span = document.querySelector(".bookmark span");
+const markBookmark = (e)=>{
+    e.preventDefault();
+    bookmark.classList.toggle("active");
+    if (bookmark.classList.contains("active")) bookmark_span.textContent = "Bookmarked";
+    else if (!bookmark.classList.contains("active")) bookmark_span.textContent = "Bookmark";
 };
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["8TtF2","gLLPy"], "gLLPy", "parcelRequire750c")

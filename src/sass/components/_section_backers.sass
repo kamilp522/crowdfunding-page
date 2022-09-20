@@ -1,4 +1,5 @@
 @use '../abstracts' as abs
+@use '../_breakpoints' as br
 
 .backed-info
     background-color: white
@@ -11,9 +12,16 @@
     scroll-margin-top: 50px
 
     .backed-container
-        display: grid
-        gap: 3rem
-        padding-block: 1rem
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+
+        @include br.desktop
+            flex-direction: row
+            justify-content: space-around
+
+        & > *
+            padding-block: 1.5em
 
         .backed-sum
             position: relative
@@ -24,8 +32,13 @@
             width: 5em
             height: 1px
             background-color: abs.$primary-mod-cyan
-            bottom: -50%
+            bottom: 0
             transform: translateX(-50%)
+
+            @include br.desktop
+                width: 1px
+                height: 5em
+                transform: translate(9.3em, -1em)
 
         .days
             position: relative
@@ -36,8 +49,13 @@
             width: 5em
             height: 1px
             background-color: abs.$primary-mod-cyan
-            bottom: 120%
+            bottom: 100%
             transform: translateX(-50%)
+
+            @include br.desktop
+                width: 1px
+                height: 5em
+                transform: translate(-6.5em, 6.25em)
 
         div
             & p
@@ -48,18 +66,21 @@
                 font-size: 2rem
 
             & p:last-child
-                color: grey
+                color: abs.$neutral-dark-grey
         
     .progression-bar
         height: 1rem
         width: 90%
-        margin: 1em auto
+        margin: 0 auto 1em
         background-color: rgba(122, 122, 122, 0.2)
         border-radius: 20px
 
+        @include br.desktop
+            margin: 1em auto
+
         .progress
             height: 1rem
-            min-width: 5%
+            width: 89%
             max-width: 100%
             background-color: abs.$primary-mod-cyan
             border-radius: 20px

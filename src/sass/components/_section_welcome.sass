@@ -29,7 +29,10 @@
             transform: translateX(-50%)
 
         p
-            color: grey
+            color: abs.$neutral-dark-grey
+
+            @include br.desktop
+                padding-bottom: 2em
 
 
         .btn-bkmrk-wrapper
@@ -45,13 +48,26 @@
                 justify-content: center
                 background-color: #ddd
                 border-radius: 25px
-                
+
+                &:hover
+                    opacity: 0.7
+
+                &.active
+                    opacity: 0.7
+
+                &.active:hover
+                    opacity: 1
+
                 span
                     align-self: center
                     padding: 1em 2em 1em 1em
                     display: block
-                    color: grey
+                    color: abs.$neutral-dark-grey
                     font-weight: 700
+                    min-width: 10rem
+
+                    @include br.desktopDown
+                        display: none
 
 
 

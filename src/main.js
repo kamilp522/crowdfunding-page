@@ -7,6 +7,7 @@ import * as sidebar_module from "./modules/sidebar";
 import * as selection_modal_module from "./modules/selection_modal";
 import * as thanks_modal_module from "./modules/thanks_modal";
 import * as progress_bar_module from "./modules/progress_bar";
+import * as bookmark_module from "./modules/bookmark";
 
 sidebar_module.menu_icon.addEventListener("click", sidebar_module.openSidebar);
 
@@ -23,6 +24,10 @@ selection_modal_module.openModalButtons.forEach((button) => {
 
 selection_modal_module.chosenCircles.forEach((circle) =>
   circle.addEventListener("click", selection_modal_module.chooseReward)
+);
+
+selection_modal_module.chosenTitles.forEach((title) =>
+  title.addEventListener("click", selection_modal_module.chooseReward)
 );
 
 selection_modal_module.inputs.forEach((input) => {
@@ -49,3 +54,8 @@ thanks_modal_module.thanks_modal_button.addEventListener(
 selection_modal_module.inputs.forEach((input) => {
   input.addEventListener("input", selection_modal_module.enterPledge);
 });
+
+bookmark_module.bookmark.addEventListener(
+  "click",
+  bookmark_module.markBookmark
+);

@@ -1,4 +1,6 @@
 export const chosenCircles = [...document.querySelectorAll(".choose")];
+export const chosenTitles = [...document.querySelectorAll(".title-item")];
+
 export const closeModalIcon = document.querySelector(".close-selection-modal");
 export const selectionModal = document.querySelector(".selection-modal");
 export const cards = [...document.querySelectorAll(".selection-modal .card")];
