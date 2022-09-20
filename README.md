@@ -40,7 +40,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Solution URL: [Add solution URL here](https://www.frontendmentor.io/solutions/crowdfunding-page-made-with-vanilla-js-sass-modular-approach-ZAa4BXXAUj)
 - Live Site URL: [https://kamilp522.github.io/crowdfunding-page/](https://kamilp522.github.io/crowdfunding-page/)
 
 ## My process
@@ -51,7 +51,7 @@ Users should be able to:
 - Flexbox
 - Mobile-first workflow
 - [Sass](https://sass-lang.com/) - preprocessor for css
-- js modules
+- Js modules
 
 ### Useful resources
 
