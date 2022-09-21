@@ -1,4 +1,4 @@
-$breakpoints: ("desktop": 1024px, "small_desktop": 756px, "big_desktop": 1366px)
+$breakpoints: ("desktop": 1024px, "small_desktop": 756px, "big_desktop": 1366px, "mobile_land": 480px)
 
 @mixin desktop
     @media screen and (min-width: map-get($breakpoints, "desktop"))
@@ -14,4 +14,8 @@ $breakpoints: ("desktop": 1024px, "small_desktop": 756px, "big_desktop": 1366px)
 
 @mixin desktopBig
     @media screen and (min-width: map-get($breakpoints, "big_desktop"))
+        @content
+
+@mixin mobileLandscape
+    @media screen and (max-height: map-get($breakpoints, "mobile_land")) and (orientation: landscape)
         @content

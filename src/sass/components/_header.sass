@@ -10,16 +10,34 @@ header
     @include br.desktopBig
         min-height: 40vh
 
+    @include br.mobileLandscape
+        min-height: 70vh
+
+
     .header-img-wrapper
         position: absolute
         top: 0
         left: 0
         width: 100%
 
+        &::before
+            opacity: 1
+            content: ''
+            display: block
+            position: absolute
+            top: 0
+            bottom: 0
+            left: 0
+            right: 0
+            background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.07)) 
+            z-index: 0
+
         img
             @include br.desktopSmall
                 content: url(../../../images/image-hero-desktop.jpg)
                 width: 100%
+                
+
     nav
         position: relative
         display: flex
