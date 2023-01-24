@@ -40,8 +40,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://www.frontendmentor.io/solutions/crowdfunding-page-made-with-vanilla-js-sass-modular-approach-ZAa4BXXAUj)
-- Live Site URL: [https://kamilp522.github.io/crowdfunding-page/](https://kamilp522.github.io/crowdfunding-page/)
+- [Solution on frontend mentor](https://www.frontendmentor.io/solutions/crowdfunding-page-made-with-vanilla-js-sass-modular-approach-ZAa4BXXAUj)
+- [Live site](https://kamilp522.github.io/crowdfunding-page/)
 
 ## My process
 
@@ -51,7 +51,7 @@ Users should be able to:
 - Flexbox
 - Mobile-first workflow
 - [Sass](https://sass-lang.com/) - preprocessor for css
-- Js modules
+- JS ES6 modules
 
 ### Useful resources
 
@@ -59,4 +59,4 @@ Users should be able to:
 
 ## Author
 
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/kamilp522)
+- [@kamilp522](https://www.frontendmentor.io/profile/kamilp522)
